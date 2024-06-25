@@ -1,0 +1,46 @@
+---
+title: "bar graph"
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+# Load necessary libraries
+library(ggplot2)
+library(gganimate)
+library(gifski)
+library(dplyr)
+
+# Load the dataset
+data <- read.csv("./data/cardata.csv")
+
+# Summarize the data by year
+summarized_data <- data |>
+  group_by(Year) |>
+  summarise(Average_Selling_Price = mean(Selling_Price, na.rm = TRUE))
+
+# Create the base plot
+p <- ggplot(summarized_data, aes(x = as.factor(Year), y = Average_Selling_Price)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Average Selling Price of Cars by Year",
+       x = "Year",
+       y = "Average Selling Price") +
+  theme_minimal()
+
+# Animate the plot
+anim <- p + 
+  transition_states(Year, transition_length = 2, state_length = 1, wrap = FALSE) +
+  enter_fade() + 
+  exit_fade() +
+  shadow_mark(past = TRUE, future = FALSE) +
+  labs(title = "Year: {closest_state}")
+
+# Save the animation
+animate(anim, renderer = gifski_renderer("animated_bargraph.gif"), duration = 20, end_pause = 10)
+
+
+```
+
+The Bar plot shows the average selling price per year from 2003 - 2018
+

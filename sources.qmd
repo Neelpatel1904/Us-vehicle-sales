@@ -3,4 +3,4 @@ title: "Sources"
 ---
 
 This project was created with the dataset
-[Car Sales By Model](https://www.kaggle.com/datasets/athirags/car-data)
+[Car Data](https://www.kaggle.com/datasets/athirags/car-data)

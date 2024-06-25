@@ -7,11 +7,13 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: plot-2.qmd
+      - href: plot-3.qmd
+      - href: plot-4.qmd
       - href: about.qmd
       - href: sources.qmd
         text: Sources
-      - href: plot-2.qmd
-      - text: Plot 2
+      
 
 format:
   html:

@@ -4,7 +4,14 @@
     "href": "sources.html",
     "title": "Sources",
     "section": "",
-    "text": "This project was created with the dataset Car Sales By Model"
+    "text": "This project was created with the dataset Car Data"
+  },
+  {
+    "objectID": "plot-2.html",
+    "href": "plot-2.html",
+    "title": "box plot",
+    "section": "",
+    "text": "This plot shows the average price of cars per year from 2003 - 2018"
   },
   {
     "objectID": "index.html",
@@ -21,10 +28,24 @@
     "text": "Hi, I am Neel Patel im in highschool and im from bartlett, illinois. You can find me at Github or email me at neel.p.0920@gmail.com.\nThis is an analysis between the car sales between each year from 2013 and 2022. US-vehicle-sales\nThis project was created as a part of Kane’s Data Science Bootcamp"
   },
   {
-    "objectID": "plot-2.html",
-    "href": "plot-2.html",
-    "title": "Plot 2",
+    "objectID": "Untitled.html",
+    "href": "Untitled.html",
+    "title": "Average Selling Price Per Year",
     "section": "",
-    "text": "# Load necessary libraries\nlibrary(ggplot2)\nlibrary(gganimate)\nlibrary(gifski)\n\n# Load the dataset\ndata &lt;- read.csv(\"./data/cardata.csv\")\n\n# Create the base plot\np &lt;- ggplot(data, aes(x = as.factor(Year), y = Selling_Price)) +\n  geom_boxplot() +\n  labs(title = \"Box Plot of Selling Prices of Cars by Year\",\n       x = \"Year\",\n       y = \"Selling Price\") +\n  theme_minimal()\n\n# Animate the plot\nanim &lt;- p + transition_states(Year, transition_length = 2, state_length = 1, wrap = FALSE) +\n  shadow_mark(past = TRUE, future = FALSE) +\n  enter_fade() + \n  exit_fade() +\n  labs(title = \"Year: {closest_state}\")\n\n# Save the animation\nanimate(anim, renderer = gifski_renderer(\"animated_boxplot.gif\"), duration = 20, end_pause = 10)"
+    "text": "The Bar plot shows the average selling price per year from 2003 - 2018"
+  },
+  {
+    "objectID": "plot-3.html",
+    "href": "plot-3.html",
+    "title": "bar graph",
+    "section": "",
+    "text": "The Bar plot shows the average selling price per year from 2003 - 2018"
+  },
+  {
+    "objectID": "plot-4.html",
+    "href": "plot-4.html",
+    "title": "Line plot",
+    "section": "",
+    "text": "The Plot Shows the trend of the average selling price going up in price"
   }
 ]

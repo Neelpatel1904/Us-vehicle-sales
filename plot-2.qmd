@@ -1,5 +1,5 @@
 ---
-title: "Average Price Per Year"
+title: "box plot"
 ---
 
 ```{r}
@@ -36,5 +36,7 @@ animate(anim, renderer = gifski_renderer("animated_boxplot.gif"), duration = 20,
 
 
 ```
+
+This plot shows the average price of cars per year from 2003 - 2018
 
 
