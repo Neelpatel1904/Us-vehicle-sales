@@ -1,0 +1,33 @@
+---
+title: "US Vehicle Sales"
+---
+
+Car prices vary greatly based on the mileage and age of the car. The following data was sourced from wikipedia between 2003 and 2018. Then the data frames were joined to analyze the change in sales of  vehicles from 2003 to 2018. The average car price increased by almost 200% from 2003 to 2018 (due to inflation).
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Load the packages
+library(ggplot2)
+library(gganimate)
+library(dplyr)
+library(tidyverse)
+
+# Read your data
+cars_df <- read_csv("./data/cardata.csv") |>
+  mutate(miles_driven = Kms_Driven * 0.621371)
+
+p <- ggplot(cars_df, aes(x = Selling_Price, y = Present_Price, color = miles_driven)) +
+  geom_point(alpha = .5) +
+  labs(title = 'Year: {round(frame_time)}', x = 'Selling Price', y = 'Current Price', color = "Miles Driven") +
+  transition_time(Year) +
+  ease_aes('linear')
+
+animated_plot <- animate(p, nframes = 900, fps = 60, duration = 15)
+
+animated_plot
+```
+
+The value of cars has increased over the years, as inflation increased drastically during the recession of 2009 and the recession due to the effects of COVID-19. This caused car prices to inflate as used cars became more expensive, even going as far as exceeding their sticker price. 
