@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "sources.html",
+    "href": "sources.html",
+    "title": "Sources",
+    "section": "",
+    "text": "This project was created with the dataset Car Sales By Model"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "US Vehicle Sales",
+    "section": "",
+    "text": "Car prices vary greatly based on the mileage and age of the car. The following data was sourced from wikipedia between 2003 and 2018. Then the data frames were joined to analyze the change in sales of vehicles from 2003 to 2018. The average car price increased by almost 200% from 2003 to 2018 (due to inflation).\n\n\n\n\n\n\n\n\n\nThe value of cars has increased over the years, as inflation increased drastically during the recession of 2009 and the recession due to the effects of COVID-19. This caused car prices to inflate as used cars became more expensive, even going as far as exceeding their sticker price."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi, I am Neel Patel im in highschool and im from bartlett, illinois. You can find me at Github or email me at neel.p.0920@gmail.com.\nThis is an analysis between the car sales between each year from 2013 and 2022. US-vehicle-sales\nThis project was created as a part of Kane’s Data Science Bootcamp"
+  },
+  {
+    "objectID": "plot-2.html",
+    "href": "plot-2.html",
+    "title": "Plot 2",
+    "section": "",
+    "text": "# Load necessary libraries\nlibrary(ggplot2)\nlibrary(gganimate)\nlibrary(gifski)\n\n# Load the dataset\ndata &lt;- read.csv(\"./data/cardata.csv\")\n\n# Create the base plot\np &lt;- ggplot(data, aes(x = as.factor(Year), y = Selling_Price)) +\n  geom_boxplot() +\n  labs(title = \"Box Plot of Selling Prices of Cars by Year\",\n       x = \"Year\",\n       y = \"Selling Price\") +\n  theme_minimal()\n\n# Animate the plot\nanim &lt;- p + transition_states(Year, transition_length = 2, state_length = 1, wrap = FALSE) +\n  shadow_mark(past = TRUE, future = FALSE) +\n  enter_fade() + \n  exit_fade() +\n  labs(title = \"Year: {closest_state}\")\n\n# Save the animation\nanimate(anim, renderer = gifski_renderer(\"animated_boxplot.gif\"), duration = 20, end_pause = 10)"
+  }
+]

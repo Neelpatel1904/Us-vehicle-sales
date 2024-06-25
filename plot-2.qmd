@@ -1,8 +1,13 @@
 ---
-title: "Plot 2"
+title: "Average Price Per Year"
 ---
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
 # Load necessary libraries
 library(ggplot2)
 library(gganimate)
@@ -14,7 +19,7 @@ data <- read.csv("./data/cardata.csv")
 # Create the base plot
 p <- ggplot(data, aes(x = as.factor(Year), y = Selling_Price)) +
   geom_boxplot() +
-  labs(title = "Box Plot of Selling Prices of Cars by Year",
+  labs(
        x = "Year",
        y = "Selling Price") +
   theme_minimal()
