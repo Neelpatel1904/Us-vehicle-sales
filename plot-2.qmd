@@ -3,22 +3,33 @@ title: "Plot 2"
 ---
 
 ```{r}
-#| echo: false
-#| message: false
-#| warning: false
-
+# Load necessary libraries
 library(ggplot2)
+library(gganimate)
+library(gifski)
 
 # Load the dataset
 data <- read.csv("./data/cardata.csv")
 
-# Create a box plot for Selling_Price organized by Year
-ggplot(data, aes(x = as.factor(Year), y = Selling_Price)) +
+# Create the base plot
+p <- ggplot(data, aes(x = as.factor(Year), y = Selling_Price)) +
   geom_boxplot() +
   labs(title = "Box Plot of Selling Prices of Cars by Year",
        x = "Year",
        y = "Selling Price") +
   theme_minimal()
+
+# Animate the plot
+anim <- p + transition_states(Year, transition_length = 2, state_length = 1, wrap = FALSE) +
+  shadow_mark(past = TRUE, future = FALSE) +
+  enter_fade() + 
+  exit_fade() +
+  labs(title = "Year: {closest_state}")
+
+# Save the animation
+animate(anim, renderer = gifski_renderer("animated_boxplot.gif"), duration = 20, end_pause = 10)
+
+
 ```
 
 
